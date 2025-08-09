@@ -1,6 +1,8 @@
-const WorkTerm = () => 
+const Report = () => 
 {
-
+    return (
+        <div>Report</div>
+    )
 }
 
-export default WorkTerm1;
+export default Report;
