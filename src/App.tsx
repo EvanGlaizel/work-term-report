@@ -1,34 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Route, Routes } from "react-router-dom";
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import Navigation from './routes/navigation.tsx'
+import Report from './routes/report.tsx'
+
+function App() 
+{
+  type paragraph = {
+    text: string, 
+    image?: string, 
+    alt?: string
+  }
+  type report = paragraph[];
+
+  const notFoundWorkTermTitle:string = "Co-op position not secured yet"
+  const notFoundWorkTermReport:report = [{text = ""}];
+  const incompleteWorkTermReport:report = [{text = "This co-op is still ongoing. The work term will be posted once its completed"}];
+
+  const workTerm1:report = [{text="This is a test paragraph"}];
+
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+        <Route path="/" element={<Navigation/>}>
+          <Route path="workterm1" element={<WorkTerm title="STEAM Instructor at The STEAM Project" content={workTerm1}/>}/>
+          <Route path="workterm2" element={<WorkTerm title="Business Intelligence Internship at The Co-operators" content={incompleteWorkTermReport}/>}/>
+          <Route path="workterm3" element={<WorkTerm title={notFoundWorkTermTitle} content={notFoundWorkTermReport}/>}/>
+          <Route path="workterm4" element={<WorkTerm/ title={notFoundWorkTermTitle} content={notFoundWorkTermReport}>}/>
+          <Route path="workterm5" element={<WorkTerm title={notFoundWorkTermTitle} content={notFoundWorkTermReport}/>}/>
+        </Route>
+    </Routes>
   )
 }
 
