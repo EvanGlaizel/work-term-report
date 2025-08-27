@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, HashRouter } from "react-router-dom";
 import './App.css'
 
 import Navigation from './routes/navigation.tsx'
@@ -30,16 +30,18 @@ function App()
 
 
   return (
-    <Routes>
-        <Route path="/" element={<Navigation/>}>
-          <Route index element={<Navigate to="workterm1" replace />} />
-          <Route path="workterm1" element={<Report title="STEAM Instructor at The STEAM Project" content={workTerm1}/>}/>
-          <Route path="workterm2" element={<Report title="Business Intelligence Internship at The Co-operators" content={incompleteWorkTermReport}/>}/>
-          <Route path="workterm3" element={<Report title={notFoundWorkTermTitle} />}/>
-          <Route path="workterm4" element={<Report title={notFoundWorkTermTitle} />}/>
-          <Route path="workterm5" element={<Report title={notFoundWorkTermTitle} />}/>
-        </Route>
-    </Routes>
+    <HashRouter>
+      <Routes>
+          <Route path="/" element={<Navigation/>}>
+            <Route index element={<Navigate to="workterm1" replace />} />
+            <Route path="workterm1" element={<Report title="STEAM Instructor at The STEAM Project" content={workTerm1}/>}/>
+            <Route path="workterm2" element={<Report title="Business Intelligence Internship at The Co-operators" content={incompleteWorkTermReport}/>}/>
+            <Route path="workterm3" element={<Report title={notFoundWorkTermTitle} />}/>
+            <Route path="workterm4" element={<Report title={notFoundWorkTermTitle} />}/>
+            <Route path="workterm5" element={<Report title={notFoundWorkTermTitle} />}/>
+          </Route>
+      </Routes>
+    </HashRouter>
   )
 }
 
