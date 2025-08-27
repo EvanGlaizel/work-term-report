@@ -11,13 +11,19 @@ const Navigation = () =>
 
     return (
         <>
-        {sections.map((section, idx) => (
-            <div key={idx}>
-                <Link to={section.to}>{section.link}</Link>
+        <nav className="fixed top-0 left-0 w-full bg-gray-900 border-b border-gray-700 shadow-md z-50">
+            <div className="flex justify-evenly space-x-6 py-4">
+                {sections.map((section, idx) => (
+                    <Link key={idx} to={section.to} className="text-gray-300 hover:text-white transition-colors duration-200 text-xl font-medium">{section.link}</Link>
+                ))}
             </div>
-        ))}
+        </nav>
 
-        <Outlet/>
+        <div className="pt-20 px-4 max-w-5xl mx-auto">
+            <Outlet/>
+        </div>
+
+        
         </>
     )
 }
